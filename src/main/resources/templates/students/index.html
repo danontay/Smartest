@@ -1,0 +1,16 @@
+<!Doctype html>
+<html lang="en" xmlns:th=" http://thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="student : ${students}">
+    <a th:href="@{/students/{id}(id=${student.getId()})}" th:text="${student.getFirstName()} + ', ' + ${student.getLastName()}+ ', ' + ${student.getGroupId ()}" >student</a>
+</div>
+
+<br/>
+<hr/>
+<a href="/students/new">Create new student</a>
+</body>
+</html>

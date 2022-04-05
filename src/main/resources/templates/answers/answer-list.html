@@ -1,0 +1,35 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>
+        Questions
+    </title>
+</head>
+<body>
+<div th:switch="${answers}">
+    <h2 th:case="null">No questions found!</h2>
+    <div th:case="*">
+        <h2>Questions</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <!--                <th>Group Id</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="answer  ${answers}">
+                <td th:text="${answer.text}"></td>
+                <td th:text="${answer.isCorrect}"></td>
+                <!--                <td th:text="${student.groupId}"></td>-->
+                <td><a th:href="@{answer-update/{id}(id=${answer.id})}">Edit</a></td>
+                <td><a th:href="@{answer-delete/{id}(id=${answer.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/answer-create">Create user</a></p>
+</div>
+</body>

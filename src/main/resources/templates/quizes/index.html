@@ -1,0 +1,18 @@
+<!Doctype html>
+<html lang="en" xmlns:th=" http://thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>Quizes</title>
+</head>
+<body>
+<div th:each="quiz : ${quizes}">
+    <a th:text="${quiz.getQuizName()} + ', ' + ${quiz.getSubjectId()}" >quiz</a>
+    <a th:href="@{/questions/{id}/get(id=${quiz.getId()})}"> Open questions </a>
+</div>
+
+
+<br/>
+<hr/>
+<a href="/quizes/new">Create new quiz</a>
+</body>
+</html>

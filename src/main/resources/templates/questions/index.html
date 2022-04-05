@@ -1,0 +1,42 @@
+<!Doctype html>
+<html lang="en" xmlns:th=" http://thymeleaf.org">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<h2>Questions</h2>-->
+<!--<div th:each="question : ${questions}">-->
+<!--<p th:text="${question.getId()}">Value</p>-->
+<!--<p th:text="${question.getText()}">Value</p>-->
+<!--<p th:text="${question.getQuizId()}">Value</p>-->
+<!--</div>-->
+
+<div th:switch="${questions}">
+    <h2 th:case="null">No questions found!</h2>
+    <div th:case="*">
+        <h2>Questions</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Question text</th>
+                <!--                <th>Group Id</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="question: ${questions}">
+                <td th:text="${question.getId()}"></td>
+                <td th:text="${question.getText()}"></td>
+                <!--                <td th:text="${student.groupId}"></td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/question-create">Create Question</a></p>
+</div>
+<br/>
+<hr/>
+<!--<a href="/questions/new">Create new question</a>-->
+</body>
+</html>
